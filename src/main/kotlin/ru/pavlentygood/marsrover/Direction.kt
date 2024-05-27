@@ -1,5 +1,8 @@
 package ru.pavlentygood.marsrover
 
 enum class Direction {
-    NORTH
+    NORTH,
+    EAST,
+    SOUTH,
+    WEST
 }

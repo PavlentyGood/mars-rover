@@ -1,5 +1,6 @@
 package ru.pavlentygood.marsrover
 
 enum class Action {
-    MOVE
+    MOVE,
+    RIGHT
 }
