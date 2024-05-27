@@ -2,33 +2,37 @@ package ru.pavlentygood.marsrover
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import ru.pavlentygood.marsrover.Action.*
+import ru.pavlentygood.marsrover.Direction.*
 
 class RoverTest {
 
     @Test
     fun `to move`() {
-        val rover = Rover(x = 0, y = 0, direction = Direction.NORTH)
-        rover.doAction(Action.MOVE)
-        rover.doAction(Action.MOVE)
-        rover.x shouldBe 0
-        rover.y shouldBe 2
+        val origin = Rover(x = 0, y = 0, direction = NORTH)
+        val result: Rover = origin
+            .doAction(MOVE)
+            .doAction(MOVE)
+        result.x shouldBe 0
+        result.y shouldBe 2
     }
 
     @Test
-    fun `to right`() {
-        fun toRight(times: Int, result: Direction) {
-            val rover = Rover(x = 0, y = 0, direction = Direction.NORTH)
-            repeat(times) {
-                rover.doAction(Action.RIGHT)
-            }
-            rover.x shouldBe 0
-            rover.y shouldBe 0
-            rover.direction shouldBe result
+    fun `rotate to right, left`() {
+        fun turn(action: Action, begin: Direction, end: Direction) {
+            val origin = Rover(x = 0, y = 0, direction = begin)
+            val result: Rover = origin.doAction(action)
+            result.x shouldBe 0
+            result.y shouldBe 0
+            result.direction shouldBe end
         }
-
-        toRight(1, Direction.EAST)
-        toRight(2, Direction.SOUTH)
-        toRight(3, Direction.WEST)
-        toRight(4, Direction.NORTH)
+        turn(RIGHT, NORTH, EAST)
+        turn(RIGHT, EAST, SOUTH)
+        turn(RIGHT, SOUTH, WEST)
+        turn(RIGHT, WEST, NORTH)
+        turn(LEFT, NORTH, WEST)
+        turn(LEFT, WEST, SOUTH)
+        turn(LEFT, SOUTH, EAST)
+        turn(LEFT, EAST, NORTH)
     }
 }
