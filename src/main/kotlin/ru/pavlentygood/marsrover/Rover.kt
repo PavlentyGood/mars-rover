@@ -5,6 +5,7 @@ class Rover(
     var y: Int,
     var direction: Direction
 ) {
-    fun move() {
+    fun doAction(action: Action) {
+        y++
     }
 }
