@@ -9,7 +9,19 @@ class Rover(
     val direction: Direction,
 ) {
     fun doAction(action: Action) = when (action) {
-        MOVE -> Rover(x = x, y = y + 1, direction = direction)
+        MOVE -> Rover(
+            x = when (direction) {
+                EAST -> x + 1
+                WEST -> x - 1
+                else -> x
+            },
+            y = when (direction) {
+                NORTH -> y + 1
+                SOUTH -> y - 1
+                else -> y
+            },
+            direction = direction
+        )
         RIGHT -> Rover(
             x = x,
             y = y,
