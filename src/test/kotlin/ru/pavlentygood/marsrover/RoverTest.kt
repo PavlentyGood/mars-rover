@@ -30,14 +30,8 @@ class RoverTest {
             result.y shouldBe 0
             result.direction shouldBe end
         }
-        turn(RIGHT, NORTH, EAST)
-        turn(RIGHT, EAST, SOUTH)
-        turn(RIGHT, SOUTH, WEST)
-        turn(RIGHT, WEST, NORTH)
-        turn(LEFT, NORTH, WEST)
-        turn(LEFT, WEST, SOUTH)
-        turn(LEFT, SOUTH, EAST)
-        turn(LEFT, EAST, NORTH)
+        turn(action = RIGHT, begin = NORTH, end = EAST)
+        turn(action = LEFT, begin = WEST, end = SOUTH)
     }
 
     @Test

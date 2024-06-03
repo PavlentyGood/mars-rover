@@ -26,29 +26,15 @@ class Rover(
             },
             direction = direction
         )
-        RIGHT -> Rover(
-            width = width,
-            height = height,
-            x = x,
-            y = y,
-            direction = when (direction) {
-                NORTH -> EAST
-                EAST -> SOUTH
-                SOUTH -> WEST
-                WEST -> NORTH
-            }
-        )
-        LEFT -> Rover(
-            width = width,
-            height = height,
-            x = x,
-            y = y,
-            direction = when (direction) {
-                NORTH -> WEST
-                WEST -> SOUTH
-                SOUTH -> EAST
-                EAST -> NORTH
-            }
-        )
+        RIGHT -> directed(direction.onRight())
+        LEFT -> directed(direction.onLeft())
     }
+
+    private fun directed(direction: Direction) = Rover(
+        width = width,
+        height = height,
+        x = x,
+        y = y,
+        direction = direction
+    )
 }
