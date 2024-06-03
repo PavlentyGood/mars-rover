@@ -36,15 +36,17 @@ class RoverTest {
 
     @Test
     fun `field limit`() {
-        fun move(direction: Direction) {
-            val origin = Rover(width = 0, height = 0, x = 0, y = 0, direction = direction)
-            val rover = origin.doAction(MOVE)
-            rover.x shouldBe 0
-            rover.y shouldBe 0
+        fun move(direction: Direction, resultX: Int, resultY: Int) {
+            val origin = Rover(width = 1, height = 1, x = 0, y = 0, direction = direction)
+            val rover = origin
+                .doAction(MOVE)
+                .doAction(MOVE)
+            rover.x shouldBe resultX
+            rover.y shouldBe resultY
         }
-        move(NORTH)
-        move(EAST)
-        move(SOUTH)
-        move(WEST)
+        move(NORTH, 0, 1)
+        move(EAST, 1, 0)
+        move(SOUTH, 0, 0)
+        move(WEST, 0, 0)
     }
 }

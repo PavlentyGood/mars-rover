@@ -15,12 +15,12 @@ class Rover(
             width = width,
             height = height,
             x = when (direction) {
-                EAST -> if (x < width) x + 1 else 0
+                EAST -> if (x < width) x + 1 else x
                 WEST -> if (x > 0) x - 1 else 0
                 else -> x
             },
             y = when (direction) {
-                NORTH -> if (y < height) y + 1 else 0
+                NORTH -> if (y < height) y + 1 else y
                 SOUTH -> if (y > 0) y - 1 else 0
                 else -> y
             },
