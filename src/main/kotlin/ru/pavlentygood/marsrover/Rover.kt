@@ -17,12 +17,9 @@ class Rover(
     }
 
     private fun moved() =
-        Rover(
-            width = width,
-            height = height,
+        createRover(
             x = x + nextOffsetX(),
-            y = y + nextOffsetY(),
-            direction = direction
+            y = y + nextOffsetY()
         )
 
     private fun nextOffsetX() = when (direction) {
@@ -38,6 +35,9 @@ class Rover(
     }
 
     private fun directed(direction: Direction) =
+        createRover(direction = direction)
+
+    private fun createRover(x: Int = this.x, y: Int = this.y, direction: Direction = this.direction) =
         Rover(
             width = width,
             height = height,
