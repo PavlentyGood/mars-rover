@@ -1,19 +1,22 @@
 package ru.pavlentygood.marsrover
 
-const val NEXT = 1
-const val MOVE = 0
-
 class Rover(
     val x: Int,
-    val limit: Int
+    val limit: Int,
+    val offsetIndex: Int = 0
 ) {
+    private val offsets = arrayOf(1, 0, -1, 0)
+
     fun step() =
         Rover(
-            x = if (x == limit) x else x + NEXT,
+            x = if (x == limit) x else x + offsets[offsetIndex],
             limit = limit
         )
 
-    fun execute(rover: Rover = this, actions: List<Int>): Rover =
-        if (actions.isEmpty()) rover
-        else execute(rover.step(), actions.drop(1))
+    fun right() =
+        Rover(
+            x = x,
+            limit = limit,
+            offsetIndex = (offsetIndex + 1) % offsets.size
+        )
 }

@@ -16,7 +16,17 @@ class RoverTest {
     }
 
     @Test
-    fun `many steps`() {
-        Rover(x = 2, limit = 0).execute(actions = listOf(MOVE, MOVE)).x shouldBe 4
+    fun `test right`() {
+        Rover(x = 0, limit = 0)
+            .right().apply { offsetIndex shouldBe 1 }
+            .right().apply { offsetIndex shouldBe 2 }
+            .right().apply { offsetIndex shouldBe 3 }
+            .right().apply { offsetIndex shouldBe 0 }
+    }
+
+    @Test
+    fun `right, move - x not changed`() {
+        Rover(x = 1, limit = 2)
+            .right().step().x shouldBe 1
     }
 }
