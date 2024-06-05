@@ -1,41 +1,19 @@
 package ru.pavlentygood.marsrover
 
-import ru.pavlentygood.marsrover.Action.*
-import ru.pavlentygood.marsrover.Direction.*
+const val NEXT = 1
+const val MOVE = 0
 
 class Rover(
-    val x: Vector,
-    val y: Vector,
-    val direction: Direction,
+    val x: Int,
+    val limit: Int
 ) {
-    fun doAction(action: Action) = when (action) {
-        MOVE -> createRover(x = offsetX(), y = offsetY())
-        RIGHT -> directed(direction.onRight())
-        LEFT -> directed(direction.onLeft())
-    }
-
-    private fun offsetX() = when (direction) {
-        EAST -> x.next()
-        WEST -> x.prev()
-        else -> x
-    }
-
-    private fun offsetY() = when (direction) {
-        NORTH -> y.next()
-        SOUTH -> y.prev()
-        else -> y
-    }
-
-    private fun directed(direction: Direction) =
-        createRover(direction = direction)
-
-    private fun createRover(
-        x: Vector = this.x,
-        y: Vector = this.y,
-        direction: Direction = this.direction) =
+    fun step() =
         Rover(
-            x = x,
-            y = y,
-            direction = direction
+            x = if (x == limit) x else x + NEXT,
+            limit = limit
         )
+
+    fun execute(rover: Rover = this, actions: List<Int>): Rover =
+        if (actions.isEmpty()) rover
+        else execute(rover.step(), actions.drop(1))
 }
