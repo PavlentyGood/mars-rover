@@ -14,23 +14,21 @@ class RoverTest {
     @Test
     fun `test right`() {
         rover()
-            .right().apply { way.direction shouldBe SOUTH }
             .right().apply { way.direction shouldBe WEST }
-            .right().apply { way.direction shouldBe NORTH }
             .right().apply { way.direction shouldBe EAST }
     }
 
     @Test
     fun `test left`() {
-        rover().left().way.direction shouldBe NORTH
+        rover().left().way.direction shouldBe WEST
     }
 
     @Test
-    fun `right, step - x not changed`() {
-        rover(x = 1)
-            .right().step().apply {
-                x shouldBe 1
-                way.direction shouldBe SOUTH
+    fun `right, step`() {
+        rover(x = 1).right().step()
+            .apply {
+                x shouldBe 0
+                way.direction shouldBe WEST
             }
     }
 }
@@ -42,9 +40,7 @@ fun rover(x: Int = 0) =
             way = it,
             ways = mapOf(
                 EAST to it,
-                SOUTH to Way(direction = SOUTH, limit = 0),
-                WEST to Way(direction = WEST, limit = 0),
-                NORTH to Way(direction = NORTH, limit = 5)
+                WEST to Way(direction = WEST, limit = 0)
             )
         )
     }

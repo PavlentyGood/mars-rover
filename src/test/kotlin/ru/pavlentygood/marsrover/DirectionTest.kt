@@ -8,9 +8,7 @@ class DirectionTest {
 
     @Test
     fun `next direction`() {
-        NORTH.next() shouldBe EAST
-        EAST.next() shouldBe SOUTH
-        SOUTH.next() shouldBe WEST
-        WEST.next() shouldBe NORTH
+        EAST.next() shouldBe WEST
+        WEST.next() shouldBe EAST
     }
 }

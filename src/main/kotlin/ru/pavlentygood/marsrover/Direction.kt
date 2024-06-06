@@ -4,9 +4,7 @@ enum class Direction(
     val offset: Int
 ) {
     EAST(1),
-    SOUTH(0),
-    WEST(-1),
-    NORTH(0);
+    WEST(-1);
 
-    fun next() = values()[(ordinal + 1) % values().size] //todo remove
+    fun next() = values()[(ordinal + 1) % values().size]
 }
