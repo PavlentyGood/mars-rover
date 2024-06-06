@@ -13,7 +13,7 @@ class ExecuteMissionTest {
     @Test
     fun `test actions`() {
         executeMission(
-            rover = Rover(x = 2, limit = 3, direction = EAST),
+            rover = Rover.create(x = 2, limit = 3, direction = EAST),
             actions = listOf(MOVE, RIGHT, LEFT, RIGHT)
         ).apply {
             x shouldBe 3

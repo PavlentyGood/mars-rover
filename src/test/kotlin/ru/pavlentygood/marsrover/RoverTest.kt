@@ -50,7 +50,7 @@ class RoverTest {
         limit: Int = 0,
         direction: Direction = EAST
     ) =
-        Rover(
+        Rover.create(
             x = x,
             limit = limit,
             direction = direction
