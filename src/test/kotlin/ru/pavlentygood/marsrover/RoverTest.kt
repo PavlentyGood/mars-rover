@@ -38,9 +38,7 @@ fun rover(x: Int = 0) =
         Rover(
             x = x,
             way = it,
-            ways = mapOf(
-                EAST to it,
-                WEST to Way(direction = WEST, limit = 0)
-            )
+            forward = it,
+            backward = Way(direction = WEST, limit = 0)
         )
     }
