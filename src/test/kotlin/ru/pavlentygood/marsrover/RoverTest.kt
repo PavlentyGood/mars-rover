@@ -3,56 +3,46 @@ package ru.pavlentygood.marsrover
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import ru.pavlentygood.marsrover.Direction.*
+import java.util.LinkedList
 
 class RoverTest {
 
     @Test
     fun `test step`() {
-        rover(x = 1, limit = 2).step().x shouldBe 2
-    }
-
-    @Test
-    fun `step limit`() {
-        rover(x = 5, limit = 5).step().x shouldBe 5
+        rover(x = 1).step().x shouldBe 2
     }
 
     @Test
     fun `test right`() {
-        rover(direction = EAST).right().direction shouldBe SOUTH
+        rover()
+            .right().apply { direction shouldBe SOUTH }
+            .right().apply { direction shouldBe WEST }
+            .right().apply { direction shouldBe NORTH }
+            .right().apply { direction shouldBe EAST }
     }
 
     @Test
     fun `test left`() {
-        rover(direction = EAST).left().direction shouldBe NORTH
+        rover().left().direction shouldBe NORTH
     }
 
     @Test
     fun `right, step - x not changed`() {
-        rover(x = 1, limit = 2)
+        rover(x = 1)
             .right().step().apply {
                 x shouldBe 1
                 direction shouldBe SOUTH
             }
     }
-
-    @Test
-    fun `west limit`() {
-        rover(x = 0, limit = 3, direction = WEST).step().x shouldBe 0
-    }
-
-    @Test
-    fun `step to west from east limit`() {
-        rover(x = 1, limit = 1, direction = WEST).step().x shouldBe 0
-    }
-
-    private fun rover(
-        x: Int = 0,
-        limit: Int = 0,
-        direction: Direction = EAST
-    ) =
-        Rover.create(
-            x = x,
-            limit = limit,
-            direction = direction
-        )
 }
+
+fun rover(x: Int = 0) =
+    Rover(
+        x = x,
+        ways = LinkedList(listOf(
+            Way(direction = EAST, limit = 8),
+            Way(direction = SOUTH, limit = 0),
+            Way(direction = WEST, limit = 0),
+            Way(direction = NORTH, limit = 5)
+        ))
+    )
