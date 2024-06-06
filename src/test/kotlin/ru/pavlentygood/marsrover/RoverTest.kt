@@ -25,6 +25,15 @@ class RoverTest {
     }
 
     @Test
+    fun `test left`() {
+        Rover(x = 0, limit = 0)
+            .left().apply { offsetIndex shouldBe 3 }
+            .left().apply { offsetIndex shouldBe 2 }
+            .left().apply { offsetIndex shouldBe 1 }
+            .left().apply { offsetIndex shouldBe 0 }
+    }
+
+    @Test
     fun `right, step - x not changed`() {
         Rover(x = 1, limit = 2)
             .right().step().apply {
