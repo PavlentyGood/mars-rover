@@ -8,9 +8,7 @@ class Rover(
 ) {
     fun step() = createRover(x = way.step(x))
 
-    fun right() = createRover(way = if (way == forward) backward else forward)
-
-    fun left() = right().right().right()
+    fun turn() = createRover(way = if (way == forward) backward else forward)
 
     private fun createRover(x: Int = this.x, way: Way = this.way) =
         Rover(x = x, way = way, forward = forward, backward = backward)

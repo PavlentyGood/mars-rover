@@ -12,20 +12,15 @@ class RoverTest {
     }
 
     @Test
-    fun `test right`() {
+    fun `test turn`() {
         rover()
-            .right().apply { way.direction shouldBe WEST }
-            .right().apply { way.direction shouldBe EAST }
+            .turn().apply { way.direction shouldBe WEST }
+            .turn().apply { way.direction shouldBe EAST }
     }
 
     @Test
-    fun `test left`() {
-        rover().left().way.direction shouldBe WEST
-    }
-
-    @Test
-    fun `right, step`() {
-        rover(x = 1).right().step()
+    fun `turn, step`() {
+        rover(x = 1).turn().step()
             .apply {
                 x shouldBe 0
                 way.direction shouldBe WEST

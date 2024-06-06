@@ -12,7 +12,7 @@ class ExecuteMissionTest {
     fun `test actions`() {
         executeMission(
             rover = rover(x = 2),
-            actions = listOf(MOVE, RIGHT, LEFT, RIGHT)
-        ).x shouldBe 3
+            actions = listOf(MOVE, RIGHT, MOVE, MOVE)
+        ).x shouldBe 1
     }
 }
