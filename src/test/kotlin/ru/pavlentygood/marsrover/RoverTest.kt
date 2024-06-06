@@ -2,6 +2,7 @@ package ru.pavlentygood.marsrover
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import ru.pavlentygood.marsrover.Direction.*
 
 class RoverTest {
 
@@ -18,19 +19,19 @@ class RoverTest {
     @Test
     fun `test right`() {
         Rover(x = 0, limit = 0)
-            .right().apply { offsetIndex shouldBe 1 }
-            .right().apply { offsetIndex shouldBe 2 }
-            .right().apply { offsetIndex shouldBe 3 }
-            .right().apply { offsetIndex shouldBe 0 }
+            .right().apply { direction shouldBe SOUTH }
+            .right().apply { direction shouldBe WEST }
+            .right().apply { direction shouldBe NORTH }
+            .right().apply { direction shouldBe EAST }
     }
 
     @Test
     fun `test left`() {
         Rover(x = 0, limit = 0)
-            .left().apply { offsetIndex shouldBe 3 }
-            .left().apply { offsetIndex shouldBe 2 }
-            .left().apply { offsetIndex shouldBe 1 }
-            .left().apply { offsetIndex shouldBe 0 }
+            .left().apply { direction shouldBe NORTH }
+            .left().apply { direction shouldBe WEST }
+            .left().apply { direction shouldBe SOUTH }
+            .left().apply { direction shouldBe EAST }
     }
 
     @Test
@@ -38,7 +39,7 @@ class RoverTest {
         Rover(x = 1, limit = 2)
             .right().step().apply {
                 x shouldBe 1
-                offsetIndex shouldBe 1
+                direction shouldBe SOUTH
             }
     }
 }

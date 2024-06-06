@@ -3,6 +3,7 @@ package ru.pavlentygood.marsrover
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import ru.pavlentygood.marsrover.Action.*
+import ru.pavlentygood.marsrover.Direction.SOUTH
 
 class ExecuteMissionTest {
 
@@ -15,7 +16,7 @@ class ExecuteMissionTest {
             actions = listOf(MOVE, RIGHT, LEFT, RIGHT)
         ).apply {
             x shouldBe 3
-            offsetIndex shouldBe 1
+            direction shouldBe SOUTH
         }
     }
 }
