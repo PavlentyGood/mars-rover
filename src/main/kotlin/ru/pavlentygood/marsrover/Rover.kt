@@ -5,7 +5,7 @@ class Rover(
     val limit: Int,
     val direction: Direction
 ) {
-    fun step() = createRover(x = if (x == limit) x else x + direction.offset)
+    fun step() = createRover(x = direction.step(this))
 
     fun right() = createRover(direction = direction.next())
 

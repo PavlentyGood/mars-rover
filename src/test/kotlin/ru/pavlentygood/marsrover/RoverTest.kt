@@ -35,6 +35,16 @@ class RoverTest {
             }
     }
 
+    @Test
+    fun `west limit`() {
+        rover(x = 0, limit = 3, direction = WEST).step().x shouldBe 0
+    }
+
+    @Test
+    fun `step to west from east limit`() {
+        rover(x = 1, limit = 1, direction = WEST).step().x shouldBe 0
+    }
+
     private fun rover(
         x: Int = 0,
         limit: Int = 0,
