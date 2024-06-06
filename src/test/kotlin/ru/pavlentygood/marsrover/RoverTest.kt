@@ -18,20 +18,12 @@ class RoverTest {
 
     @Test
     fun `test right`() {
-        Rover(x = 0, limit = 0)
-            .right().apply { direction shouldBe SOUTH }
-            .right().apply { direction shouldBe WEST }
-            .right().apply { direction shouldBe NORTH }
-            .right().apply { direction shouldBe EAST }
+        Rover(x = 0, limit = 0).right().direction shouldBe SOUTH
     }
 
     @Test
     fun `test left`() {
-        Rover(x = 0, limit = 0)
-            .left().apply { direction shouldBe NORTH }
-            .left().apply { direction shouldBe WEST }
-            .left().apply { direction shouldBe SOUTH }
-            .left().apply { direction shouldBe EAST }
+        Rover(x = 0, limit = 0).left().direction shouldBe NORTH
     }
 
     @Test

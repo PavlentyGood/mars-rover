@@ -7,7 +7,7 @@ class Rover(
 ) {
     fun step() = createRover(x = if (x == limit) x else x + direction.offset)
 
-    fun right() = createRover(direction = Direction.values()[(direction.ordinal + 1) % Direction.values().size])
+    fun right() = createRover(direction = direction.next())
 
     fun left() = right().right().right()
 
