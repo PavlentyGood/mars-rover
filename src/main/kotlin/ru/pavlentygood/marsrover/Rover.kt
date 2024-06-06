@@ -7,8 +7,7 @@ class Rover(
     val x: Int,
     private val ways: Queue<Way>
 ) {
-    val direction get() = way.direction
-    private val way = ways.element()
+    val way: Way = ways.element()
 
     fun step() = createRover(x = way.step(x))
 

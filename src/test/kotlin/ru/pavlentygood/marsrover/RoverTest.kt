@@ -15,15 +15,15 @@ class RoverTest {
     @Test
     fun `test right`() {
         rover()
-            .right().apply { direction shouldBe SOUTH }
-            .right().apply { direction shouldBe WEST }
-            .right().apply { direction shouldBe NORTH }
-            .right().apply { direction shouldBe EAST }
+            .right().apply { way.direction shouldBe SOUTH }
+            .right().apply { way.direction shouldBe WEST }
+            .right().apply { way.direction shouldBe NORTH }
+            .right().apply { way.direction shouldBe EAST }
     }
 
     @Test
     fun `test left`() {
-        rover().left().direction shouldBe NORTH
+        rover().left().way.direction shouldBe NORTH
     }
 
     @Test
@@ -31,7 +31,7 @@ class RoverTest {
         rover(x = 1)
             .right().step().apply {
                 x shouldBe 1
-                direction shouldBe SOUTH
+                way.direction shouldBe SOUTH
             }
     }
 }
