@@ -1,6 +1,8 @@
 package ru.pavlentygood.marsrover
 
-enum class Action {
-    MOVE,
-    RIGHT
+enum class Action(
+    val execute: (Rover) -> Rover
+) {
+    MOVE(Rover::step),
+    RIGHT(Rover::right)
 }
