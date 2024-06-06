@@ -15,7 +15,8 @@ class Rover(
     private fun create(
         x: Int = this.x,
         limit: Int = this.limit,
-        offsetIndex: Int = this.offsetIndex) =
+        offsetIndex: Int = this.offsetIndex
+    ) =
         Rover(
             x = x,
             limit = limit,
