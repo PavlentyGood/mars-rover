@@ -1,27 +1,16 @@
 package ru.pavlentygood.marsrover
 
-import java.util.LinkedList
-import java.util.Queue
-
 class Rover(
     val x: Int,
-    private val ways: Queue<Way>
+    val way: Way,
+    private val ways: Map<Direction, Way>
 ) {
-    val way: Way = ways.element()
-
     fun step() = createRover(x = way.step(x))
 
-    fun right() = createRover(ways = nextWays())
-
-    private fun nextWays(): Queue<Way> {
-        val ways = LinkedList(ways)
-        val next = ways.remove()
-        ways.add(next)
-        return ways
-    }
+    fun right() = createRover(way = ways[way.direction.next()]!!)
 
     fun left() = right().right().right()
 
-    private fun createRover(x: Int = this.x, ways: Queue<Way> = this.ways) =
-        Rover(x = x, ways = ways)
+    private fun createRover(x: Int = this.x, way: Way = this.way, ways: Map<Direction, Way> = this.ways) =
+        Rover(x = x, way = way, ways = ways)
 }

@@ -3,7 +3,6 @@ package ru.pavlentygood.marsrover
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import ru.pavlentygood.marsrover.Direction.*
-import java.util.LinkedList
 
 class RoverTest {
 
@@ -37,12 +36,15 @@ class RoverTest {
 }
 
 fun rover(x: Int = 0) =
-    Rover(
-        x = x,
-        ways = LinkedList(listOf(
-            Way(direction = EAST, limit = 8),
-            Way(direction = SOUTH, limit = 0),
-            Way(direction = WEST, limit = 0),
-            Way(direction = NORTH, limit = 5)
-        ))
-    )
+    Way(direction = EAST, limit = 8).let {
+        Rover(
+            x = x,
+            way = it,
+            ways = mapOf(
+                EAST to it,
+                SOUTH to Way(direction = SOUTH, limit = 0),
+                WEST to Way(direction = WEST, limit = 0),
+                NORTH to Way(direction = NORTH, limit = 5)
+            )
+        )
+    }
