@@ -2,17 +2,18 @@ package ru.pavlentygood.marsrover
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
-import ru.pavlentygood.marsrover.Action.*
+import ru.pavlentygood.marsrover.Action.MOVE
+import ru.pavlentygood.marsrover.Action.RIGHT
 
 class ExecuteMissionTest {
 
     private val executeMission = ExecuteMission()
 
     @Test
-    fun `test actions`() {
+    fun `execute actions`() {
         executeMission(
-            rover = rover(x = 2),
-            actions = listOf(MOVE, RIGHT, MOVE, MOVE)
-        ).x shouldBe 1
+            rover = rover(),
+            actions = listOf(MOVE, RIGHT)
+        ) shouldBe RIGHT.execute(MOVE.execute(rover()))
     }
 }

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 class WayTest {
 
     @Test
-    fun `test step`() {
+    fun `one step`() {
         Way(offset = FORWARD, limit = 4).step(2) shouldBe 3
     }
 

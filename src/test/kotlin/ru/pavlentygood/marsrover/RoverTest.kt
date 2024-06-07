@@ -6,34 +6,45 @@ import org.junit.jupiter.api.Test
 class RoverTest {
 
     @Test
-    fun `test step`() {
-        rover(x = 1).step().x shouldBe 2
-    }
-
-    @Test
-    fun `test turn`() {
+    fun `step by x`() {
         rover()
-            .turn().apply { way.offset shouldBe BACKWARD }
-            .turn().apply { way.offset shouldBe FORWARD }
+            .step().apply { x shouldBe xCoordinate.step() }
     }
 
     @Test
-    fun `turn, step`() {
-        rover(x = 1).turn().step()
-            .apply {
-                x shouldBe 0
-                way.offset shouldBe BACKWARD
-            }
+    fun `step by y`() {
+        rover(coordinate = yCoordinate)
+            .step().apply { y shouldBe yCoordinate.step() }
+    }
+
+    @Test
+    fun `all turns`() {
+        rover()
+            .turn().apply { current shouldBe yCoordinate.reversed() }
+            .turn().apply { current shouldBe xCoordinate.reversed() }
     }
 }
 
-fun rover(x: Int = 0) =
-    Way(offset = FORWARD, limit = 8)
-        .let {
-            Rover(
-                x = x,
-                way = it,
-                forward = it,
-                backward = Way(offset = BACKWARD, limit = 0)
-            )
-        }
+fun rover(coordinate: Coordinate = xCoordinate): Rover {
+    return Rover(
+        current = coordinate,
+        x = xCoordinate,
+        y = yCoordinate
+    )
+}
+
+val xWay = Way(offset = FORWARD, limit = 8)
+val yWay = Way(offset = FORWARD, limit = 3)
+val backward = Way(offset = BACKWARD, limit = 0)
+val xCoordinate = Coordinate(
+    value = 1,
+    currentWay = xWay,
+    forward = xWay,
+    backward = backward
+)
+val yCoordinate = Coordinate(
+    value = 4,
+    currentWay = yWay,
+    forward = yWay,
+    backward = backward
+)
