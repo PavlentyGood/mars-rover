@@ -1,10 +1,21 @@
 package ru.pavlentygood.marsrover
 
+import ru.pavlentygood.marsrover.Side.*
+
 data class Rover(
     val current: Coordinate,
     val x: Coordinate,
     val y: Coordinate
 ) {
+    val side =
+        if (current == x) {
+            if (x.current.offset == FORWARD) EAST
+            else WEST
+        } else {
+            if (y.current.offset == FORWARD) NORTH
+            else SOUTH
+        }
+
     fun step() =
         current.step().let {
             Rover(

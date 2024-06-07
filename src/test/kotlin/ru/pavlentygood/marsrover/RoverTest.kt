@@ -6,6 +6,15 @@ import org.junit.jupiter.api.Test
 class RoverTest {
 
     @Test
+    fun `get output data`() {
+        rover.apply {
+            x.value shouldBe 1
+            y.value shouldBe 4
+            side shouldBe Side.EAST
+        }
+    }
+
+    @Test
     fun `step by x`() {
         rover.step().apply {
             current shouldBe xCoordinate.step()
