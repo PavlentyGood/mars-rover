@@ -6,15 +6,30 @@ import org.junit.jupiter.api.Test
 class RoverTest {
 
     @Test
-    fun `one step`() {
-        rover.step().current shouldBe xCoordinate.step()
+    fun `step by x`() {
+        rover.step().apply {
+            current shouldBe xCoordinate.step()
+            x shouldBe xCoordinate.step()
+        }
+    }
+
+    @Test
+    fun `step by y`() {
+        rover.turn().step().apply {
+            current shouldBe yCoordinate.reversed().step()
+            y shouldBe yCoordinate.reversed().step()
+        }
     }
 
     @Test
     fun `all turns`() {
         rover.turn().apply {
             current shouldBe yCoordinate.reversed()
-            other shouldBe xCoordinate
+            y shouldBe yCoordinate.reversed()
+        }
+        rover.turn().turn().apply {
+            current shouldBe xCoordinate.reversed()
+            x shouldBe xCoordinate.reversed()
         }
     }
 }
@@ -32,4 +47,4 @@ val yCoordinate = Coordinate(
     current = yWay,
     other = backward
 )
-val rover = Rover(current = xCoordinate, other = yCoordinate)
+val rover = Rover(current = xCoordinate, x = xCoordinate, y = yCoordinate)
