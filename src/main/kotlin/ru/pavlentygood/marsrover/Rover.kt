@@ -26,11 +26,13 @@ data class Rover(
         }
 
     fun right() =
-        Rover(
-            current = (if (current == x) y else x).reversed(),
-            x = if (current == x) x else x.reversed(),
-            y = if (current == y) y else y.reversed()
-        )
+        (if (current == x) y else x).reversed().let {
+            Rover(
+                current = it,
+                x = if (current == x) x else it,
+                y = if (current == y) y else it
+            )
+        }
 
     fun left() = right().right().right()
 }
