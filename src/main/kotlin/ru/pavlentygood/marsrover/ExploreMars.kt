@@ -1,6 +1,6 @@
 package ru.pavlentygood.marsrover
 
-class ExecuteMission {
+class ExploreMars {
     operator fun invoke(rover: Rover, actions: List<Action>): Rover =
         actions.firstOrNull()
             ?.let {

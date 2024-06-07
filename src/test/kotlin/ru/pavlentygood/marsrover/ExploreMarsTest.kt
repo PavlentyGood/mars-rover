@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test
 import ru.pavlentygood.marsrover.Action.MOVE
 import ru.pavlentygood.marsrover.Action.RIGHT
 
-class ExecuteMissionTest {
+class ExploreMarsTest {
 
-    private val executeMission = ExecuteMission()
+    private val exploreMars = ExploreMars()
 
     @Test
     fun `execute actions`() {
-        executeMission(
+        exploreMars(
             rover = rover,
             actions = listOf(MOVE, RIGHT)
         ) shouldBe RIGHT.execute(MOVE.execute(rover))
