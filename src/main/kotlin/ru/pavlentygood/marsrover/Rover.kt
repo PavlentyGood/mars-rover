@@ -25,10 +25,12 @@ data class Rover(
             )
         }
 
-    fun turn() =
+    fun right() =
         Rover(
             current = (if (current == x) y else x).reversed(),
             x = if (current == x) x else x.reversed(),
             y = if (current == y) y else y.reversed()
         )
+
+    fun left() = right().right().right()
 }

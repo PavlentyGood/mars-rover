@@ -24,19 +24,19 @@ class RoverTest {
 
     @Test
     fun `step by y`() {
-        rover.turn().step().apply {
+        rover.right().step().apply {
             current shouldBe yCoordinate.reversed().step()
             y shouldBe yCoordinate.reversed().step()
         }
     }
 
     @Test
-    fun `all turns`() {
-        rover.turn().apply {
+    fun `turn to right`() {
+        rover.right().apply {
             current shouldBe yCoordinate.reversed()
             y shouldBe yCoordinate.reversed()
         }
-        rover.turn().turn().apply {
+        rover.right().right().apply {
             current shouldBe xCoordinate.reversed()
             x shouldBe xCoordinate.reversed()
         }

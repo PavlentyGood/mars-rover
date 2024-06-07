@@ -4,5 +4,6 @@ enum class Action(
     val execute: (Rover) -> Rover
 ) {
     MOVE(Rover::step),
-    RIGHT(Rover::turn)
+    RIGHT(Rover::right),
+    LEFT(Rover::left)
 }
