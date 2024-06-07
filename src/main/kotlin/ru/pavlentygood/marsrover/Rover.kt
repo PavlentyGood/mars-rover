@@ -2,26 +2,17 @@ package ru.pavlentygood.marsrover
 
 data class Rover(
     val current: Coordinate,
-    val x: Coordinate,
-    val y: Coordinate
+    val other: Coordinate
 ) {
     fun step() =
-        if (current == x) createRover(x = current.step())
-        else createRover(y = current.step())
-
-    fun turn() =
-        createRover(
-            coordinate = (if (current == x) y else x).reversed()
+        Rover(
+            current = current.step(),
+            other = other
         )
 
-    private fun createRover(
-        coordinate: Coordinate = this.current,
-        x: Coordinate = this.x,
-        y: Coordinate = this.y
-    ) =
-        Rover(
-            current = coordinate,
-            x = x,
-            y = y
+    fun turn() =
+       Rover(
+            current = other.reversed(),
+            other = current
         )
 }

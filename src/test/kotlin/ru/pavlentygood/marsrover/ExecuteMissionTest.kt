@@ -12,8 +12,8 @@ class ExecuteMissionTest {
     @Test
     fun `execute actions`() {
         executeMission(
-            rover = rover(),
+            rover = rover,
             actions = listOf(MOVE, RIGHT)
-        ) shouldBe RIGHT.execute(MOVE.execute(rover()))
+        ) shouldBe RIGHT.execute(MOVE.execute(rover))
     }
 }
