@@ -10,9 +10,8 @@ class CoordinateTest {
 
     private val coordinate = Coordinate(
         value = 7,
-        currentWay = forward,
-        forward = forward,
-        backward = backward
+        current = forward,
+        other = backward
     )
 
     @Test
@@ -22,8 +21,9 @@ class CoordinateTest {
 
     @Test
     fun `reversed coordinate`() {
-        coordinate
-            .reversed().apply { currentWay shouldBe backward }
-            .reversed().apply { currentWay shouldBe forward }
+        coordinate.reversed().apply {
+            current shouldBe backward
+            other shouldBe forward
+        }
     }
 }

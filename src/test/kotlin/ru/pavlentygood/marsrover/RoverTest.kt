@@ -24,14 +24,12 @@ val yWay = Way(offset = FORWARD, limit = 3)
 val backward = Way(offset = BACKWARD, limit = 0)
 val xCoordinate = Coordinate(
     value = 1,
-    currentWay = xWay,
-    forward = xWay,
-    backward = backward
+    current = xWay,
+    other = backward
 )
 val yCoordinate = Coordinate(
     value = 4,
-    currentWay = yWay,
-    forward = yWay,
-    backward = backward
+    current = yWay,
+    other = backward
 )
 val rover = Rover(current = xCoordinate, other = yCoordinate)
