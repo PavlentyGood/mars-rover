@@ -10,7 +10,7 @@ class ExploreMarsTest {
     private val exploreMars = ExploreMars()
 
     @Test
-    fun `execute actions`() {
+    fun `explore mars`() {
         exploreMars(
             rover = rover,
             actions = listOf(MOVE, RIGHT)
