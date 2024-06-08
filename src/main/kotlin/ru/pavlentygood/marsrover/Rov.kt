@@ -1,26 +1,21 @@
 package ru.pavlentygood.marsrover
 
 data class Rov(
-    val x: Int,
-    val y: Int,
+    val point: Point,
     val currentVector: Vector,
     val vectors: List<Vector>
 ) {
-    val side: Side = currentVector.side
+    val x = point.x
+    val side = currentVector.side
 
-    fun step() =
-        currentVector.step(x, y).let {
-            Rov(
-                x = it[0],
-                y = it[1],
-                currentVector = currentVector,
-                vectors = vectors
-            )
-        }
+    fun step() = Rov(
+        point = currentVector.step(point),
+        currentVector = currentVector,
+        vectors = vectors
+    )
 
     fun right() = Rov(
-        x = x,
-        y = y,
+        point = point,
         currentVector = vectors[nextVectorIndex()],
         vectors = vectors
     )

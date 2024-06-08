@@ -6,11 +6,12 @@ data class Vector(
     val limit: Int,
     val side: Side
 ) {
-    fun step(x: Int, y: Int) = listOf(
-        stepBy(x, this.x),
-        stepBy(y, this.y)
-    )
+    fun step(point: Point) =
+        Point(
+            x = stepBy(point.x, x),
+            y = stepBy(point.y, y)
+        )
 
-    private fun stepBy(v: Int, offset: Int) =
-        if (offset == 0 || v == limit) v else v + offset
+    private fun stepBy(value: Int, offset: Int) =
+        if (offset == 0 || value == limit) value else value + offset
 }

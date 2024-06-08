@@ -11,11 +11,11 @@ class VectorTest {
     @Test
     fun `one step`() {
         vector
-            .step(x = 0, y = 6) shouldBe listOf(0, 7)
+            .step(Point(x = 0, y = 6)) shouldBe Point(0, 7)
     }
 
     @Test
     fun `step limit`() {
-        vector.step(x = 0, y = 9) shouldBe listOf(0, 9)
+        vector.step(Point(x = 0, y = 9)) shouldBe Point(0, 9)
     }
 }
