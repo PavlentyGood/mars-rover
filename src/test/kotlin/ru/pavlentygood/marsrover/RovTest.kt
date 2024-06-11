@@ -7,11 +7,6 @@ import ru.pavlentygood.marsrover.Side.*
 class RovTest {
 
     @Test
-    fun right() {
-        rover().right() shouldBe rover(side = SOUTH)
-    }
-
-    @Test
     fun `step by x`() {
         rover().step() shouldBe rover(x = 3)
     }
@@ -19,6 +14,16 @@ class RovTest {
     @Test
     fun `step by y`() {
         rover(side = NORTH).step() shouldBe rover(y = 6, side = NORTH)
+    }
+
+    @Test
+    fun right() {
+        rover().right() shouldBe rover(side = SOUTH)
+    }
+
+    @Test
+    fun left() {
+        rover().left() shouldBe rover(side = NORTH)
     }
 
     private fun rover(x: Int = 2, y: Int = 5, side: Side = EAST) =

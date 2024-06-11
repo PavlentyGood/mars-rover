@@ -6,16 +6,24 @@ data class Rov(
     val side: Side
 ) {
     fun step() =
-        Rov(
+        createRover(
             x = x.add(side.xOffset),
-            y = y.add(side.yOffset),
-            side = side
+            y = y.add(side.yOffset)
         )
 
     fun right() =
-        Rov(
-            x = x,
-            y = y,
+        createRover(
             side = side.next()
         )
+
+    fun left() =
+        createRover(
+            side = side.next().next().next()
+        )
+
+    private fun createRover(
+        x: Coord = this.x,
+        y: Coord = this.y,
+        side: Side = this.side
+    ) = Rov(x, y, side)
 }
