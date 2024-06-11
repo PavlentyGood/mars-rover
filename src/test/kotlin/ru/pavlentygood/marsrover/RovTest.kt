@@ -2,26 +2,29 @@ package ru.pavlentygood.marsrover
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
-import ru.pavlentygood.marsrover.Side.EAST
-import ru.pavlentygood.marsrover.Side.SOUTH
+import ru.pavlentygood.marsrover.Side.*
 
 class RovTest {
 
-    private val east = Vector(x = 1, y = 0, limit = 9, side = EAST)
-    private val south = Vector(x = 0, y = -1, limit = 0, side = SOUTH)
-    private val rover = Rov(
-        point = Point(x = 4 , y = 2),
-        currentVector = east,
-        vectors = listOf(east, south)
-    )
-
     @Test
-    fun `turn to right`() {
-        rover.right().side shouldBe SOUTH
+    fun right() {
+        rover().right() shouldBe rover(side = SOUTH)
     }
 
     @Test
-    fun `step to east`() {
-        rover.step().x shouldBe 5
+    fun `step by x`() {
+        rover().step() shouldBe rover(x = 3)
     }
+
+    @Test
+    fun `step by y`() {
+        rover(side = NORTH).step() shouldBe rover(y = 6, side = NORTH)
+    }
+
+    private fun rover(x: Int = 2, y: Int = 5, side: Side = EAST) =
+        Rov(
+            x = Coord(value = x, limit = 8),
+            y = Coord(value = y, limit = 9),
+            side = side
+        )
 }
