@@ -1,8 +1,8 @@
 package ru.pavlentygood.marsrover
 
 data class Rover(
-    val x: Coord,
-    val y: Coord,
+    val x: Coordinate,
+    val y: Coordinate,
     val side: Side
 ) {
     fun step() =
@@ -22,8 +22,8 @@ data class Rover(
         )
 
     private fun createRover(
-        x: Coord = this.x,
-        y: Coord = this.y,
+        x: Coordinate = this.x,
+        y: Coordinate = this.y,
         side: Side = this.side
     ) = Rover(x, y, side)
 }

@@ -29,7 +29,7 @@ class RoverTest {
 
 fun rover(x: Int = 2, y: Int = 5, side: Side = EAST) =
     Rover(
-        x = Coord(value = x, limit = 8),
-        y = Coord(value = y, limit = 9),
+        x = Coordinate(value = x, limit = 8),
+        y = Coordinate(value = y, limit = 9),
         side = side
     )

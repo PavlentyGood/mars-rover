@@ -2,20 +2,13 @@ package ru.pavlentygood.marsrover
 
 data class Coordinate(
     val value: Int,
-    val current: Way,
-    val other: Way
+    val limit: Int
 ) {
-    fun step() =
-        Coordinate(
-            value = current.step(value),
-            current = current,
-            other = other
-        )
+    fun add(offset: Int) =
+        (value + offset).let {
+            if (it < 0 || it > limit) this
+            else Coordinate(it, limit)
+        }
 
-    fun reversed() =
-        Coordinate(
-            value = value,
-            current = other,
-            other = current
-        )
+    // todo add factory with validation
 }

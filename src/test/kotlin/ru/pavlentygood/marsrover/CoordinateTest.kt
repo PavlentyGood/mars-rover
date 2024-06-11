@@ -5,25 +5,24 @@ import org.junit.jupiter.api.Test
 
 class CoordinateTest {
 
-    private val forward = Way(offset = FORWARD, limit = 9)
-    private val backward = Way(offset = BACKWARD, limit = 0)
-
-    private val coordinate = Coordinate(
-        value = 7,
-        current = forward,
-        other = backward
-    )
-
     @Test
-    fun `one step`() {
-        coordinate.step().value shouldBe forward.step(7)
+    fun add() {
+        coordinate(5).add(1) shouldBe coordinate(6)
     }
 
     @Test
-    fun `reversed coordinate`() {
-        coordinate.reversed().apply {
-            current shouldBe backward
-            other shouldBe forward
-        }
+    fun `min limit`() {
+        coordinate(0).add(-1) shouldBe coordinate(0)
     }
+
+    @Test
+    fun `max limit`() {
+        coordinate(7).add(1) shouldBe coordinate(7)
+    }
+
+    private fun coordinate(value: Int) =
+        Coordinate(
+            value = value,
+            limit = 7
+        )
 }
