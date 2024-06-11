@@ -1,4 +1,4 @@
-package ru.pavlentygood.marsrover
+package ru.pavlentygood.marsrover.domain
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test

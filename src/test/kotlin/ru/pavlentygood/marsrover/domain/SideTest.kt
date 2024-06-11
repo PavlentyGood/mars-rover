@@ -1,8 +1,8 @@
-package ru.pavlentygood.marsrover
+package ru.pavlentygood.marsrover.domain
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
-import ru.pavlentygood.marsrover.Side.*
+import ru.pavlentygood.marsrover.domain.Side.*
 
 class SideTest {
 

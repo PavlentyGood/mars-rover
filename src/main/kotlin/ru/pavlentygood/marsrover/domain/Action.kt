@@ -1,4 +1,4 @@
-package ru.pavlentygood.marsrover
+package ru.pavlentygood.marsrover.domain
 
 enum class Action(
     val execute: (Rover) -> Rover

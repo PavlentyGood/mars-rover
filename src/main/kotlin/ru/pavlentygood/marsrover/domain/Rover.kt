@@ -1,4 +1,4 @@
-package ru.pavlentygood.marsrover
+package ru.pavlentygood.marsrover.domain
 
 data class Rover(
     val x: Coordinate,

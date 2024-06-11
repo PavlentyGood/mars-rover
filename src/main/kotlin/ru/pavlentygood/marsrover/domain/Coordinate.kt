@@ -1,4 +1,4 @@
-package ru.pavlentygood.marsrover
+package ru.pavlentygood.marsrover.domain
 
 const val MIN_LIMIT = 0
 

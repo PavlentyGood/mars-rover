@@ -1,8 +1,10 @@
-package ru.pavlentygood.marsrover
+package ru.pavlentygood.marsrover.usecase
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
-import ru.pavlentygood.marsrover.Action.*
+import ru.pavlentygood.marsrover.domain.Action.*
+import ru.pavlentygood.marsrover.domain.Side
+import ru.pavlentygood.marsrover.domain.rover
 
 class ExploreMarsTest {
 
