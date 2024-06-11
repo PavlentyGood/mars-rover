@@ -11,8 +11,8 @@ class ExploreMarsTest {
     @Test
     fun `explore mars`() {
         exploreMars(
-            rover = rover,
+            rover = rover(),
             actions = listOf(MOVE, RIGHT, LEFT)
-        ) shouldBe LEFT.execute(RIGHT.execute(MOVE.execute(rover)))
+        ) shouldBe LEFT.execute(RIGHT.execute(MOVE.execute(rover())))
     }
 }

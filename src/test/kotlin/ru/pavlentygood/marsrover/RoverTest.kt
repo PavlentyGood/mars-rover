@@ -2,58 +2,34 @@ package ru.pavlentygood.marsrover
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import ru.pavlentygood.marsrover.Side.*
 
 class RoverTest {
 
     @Test
-    fun `get output data`() {
-        rover.apply {
-            x.value shouldBe 1
-            y.value shouldBe 4
-            side shouldBe Side.EAST
-        }
-    }
-
-    @Test
     fun `step by x`() {
-        rover.step().apply {
-            current shouldBe xCoordinate.step()
-            x shouldBe xCoordinate.step()
-        }
+        rover().step() shouldBe rover(x = 3)
     }
 
     @Test
     fun `step by y`() {
-        rover.right().step().apply {
-            current shouldBe yCoordinate.reversed().step()
-            y shouldBe yCoordinate.reversed().step()
-        }
+        rover(side = NORTH).step() shouldBe rover(y = 6, side = NORTH)
     }
 
     @Test
-    fun `turn to right`() {
-        rover.right().apply {
-            current shouldBe yCoordinate.reversed()
-            y shouldBe yCoordinate.reversed()
-        }
-        rover.right().right().apply {
-            current shouldBe xCoordinate.reversed()
-            x shouldBe xCoordinate.reversed()
-        }
+    fun right() {
+        rover().right() shouldBe rover(side = SOUTH)
+    }
+
+    @Test
+    fun left() {
+        rover().left() shouldBe rover(side = NORTH)
     }
 }
 
-val xWay = Way(offset = FORWARD, limit = 8)
-val yWay = Way(offset = FORWARD, limit = 3)
-val backward = Way(offset = BACKWARD, limit = 0)
-val xCoordinate = Coordinate(
-    value = 1,
-    current = xWay,
-    other = backward
-)
-val yCoordinate = Coordinate(
-    value = 4,
-    current = yWay,
-    other = backward
-)
-val rover = Rover(current = xCoordinate, x = xCoordinate, y = yCoordinate)
+fun rover(x: Int = 2, y: Int = 5, side: Side = EAST) =
+    Rover(
+        x = Coord(value = x, limit = 8),
+        y = Coord(value = y, limit = 9),
+        side = side
+    )
