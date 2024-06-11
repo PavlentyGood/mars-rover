@@ -12,7 +12,7 @@ class ExploreMarsTest {
     fun `explore mars`() {
         exploreMars(
             rover = rover(),
-            actions = listOf(MOVE, RIGHT, LEFT)
-        ) shouldBe LEFT.execute(RIGHT.execute(MOVE.execute(rover())))
+            actions = listOf(MOVE, RIGHT, MOVE, LEFT, LEFT)
+        ) shouldBe rover(x = 3, y = 4, side = Side.NORTH)
     }
 }
