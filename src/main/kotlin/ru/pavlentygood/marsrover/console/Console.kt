@@ -1,7 +1,6 @@
 package ru.pavlentygood.marsrover.console
 
 import ru.pavlentygood.marsrover.domain.Action.*
-import ru.pavlentygood.marsrover.domain.Coordinate
 import ru.pavlentygood.marsrover.domain.Rover
 import ru.pavlentygood.marsrover.domain.Side
 import ru.pavlentygood.marsrover.domain.Side.*
@@ -30,11 +29,7 @@ class Console(
         println("Enter actions:")
         val actions = scanner.next().toActions()
 
-        val rover = Rover(
-            x = Coordinate(value = x, limit = width),
-            y = Coordinate(value = y, limit = height),
-            side = side
-        )
+        val rover = Rover.create(width, height, x, y, side)
 
         val resultRover = exploreMars(rover = rover, actions = actions)
 

@@ -26,4 +26,13 @@ data class Rover(
         y: Coordinate = this.y,
         side: Side = this.side
     ) = Rover(x, y, side)
+
+    companion object {
+        fun create(width: Int, height: Int, x: Int, y: Int, side: Side) =
+            Rover(
+                x = Coordinate.create(value = x, limit = width),
+                y = Coordinate.create(value = y, limit = height),
+                side = side
+            )
+    }
 }
