@@ -4,7 +4,6 @@ import io.kotest.assertions.throwables.shouldThrowMessage
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import ru.pavlentygood.marsrover.domain.Action
-import ru.pavlentygood.marsrover.domain.Action.*
 import ru.pavlentygood.marsrover.domain.Rover
 import ru.pavlentygood.marsrover.domain.Side.*
 import ru.pavlentygood.marsrover.domain.rover
@@ -19,7 +18,7 @@ class ConsoleTest {
 
         val exploreMars = { rover: Rover, actions: List<Action> ->
             rover shouldBe rover(x = 5, y = 7, side = EAST)
-            actions shouldBe listOf(MOVE)
+            actions shouldBe listOf(Rover::step)
             rover(x = 2, y = 1, side = WEST)
         }
 
@@ -55,10 +54,10 @@ class ConsoleTest {
     @Test
     fun `string to actions`() {
         "".toActions() shouldBe listOf()
-        "M".toActions() shouldBe listOf(MOVE)
-        "R".toActions() shouldBe listOf(RIGHT)
-        "L".toActions() shouldBe listOf(LEFT)
-        "LRMR".toActions() shouldBe listOf(LEFT, RIGHT, MOVE, RIGHT)
+        "M".toActions() shouldBe listOf(Rover::step)
+        "R".toActions() shouldBe listOf(Rover::right)
+        "L".toActions() shouldBe listOf(Rover::left)
+        "LRM".toActions() shouldBe listOf(Rover::left, Rover::right, Rover::step)
         shouldThrowMessage("Incorrect action: B") { "B".toActions() }
     }
 }

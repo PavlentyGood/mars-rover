@@ -1,5 +1,7 @@
 package ru.pavlentygood.marsrover.domain
 
+typealias Action = (Rover) -> Rover
+
 data class Rover(
     val x: Coordinate,
     val y: Coordinate,

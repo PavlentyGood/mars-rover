@@ -7,7 +7,7 @@ class ExploreMarsScenario : ExploreMars {
     override operator fun invoke(rover: Rover, actions: List<Action>): Rover =
         if (actions.isEmpty()) rover
         else this(
-            rover = actions.first().execute(rover),
+            rover = actions.first()(rover),
             actions = actions.drop(1)
         )
 }

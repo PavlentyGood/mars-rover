@@ -1,6 +1,5 @@
 package ru.pavlentygood.marsrover.console
 
-import ru.pavlentygood.marsrover.domain.Action.*
 import ru.pavlentygood.marsrover.domain.Rover
 import ru.pavlentygood.marsrover.domain.Side
 import ru.pavlentygood.marsrover.domain.Side.*
@@ -61,9 +60,9 @@ fun Side.toResponse() =
 fun String.toActions() =
     this.toCharArray().map {
         when (it) {
-            'M' -> MOVE
-            'R' -> RIGHT
-            'L' -> LEFT
+            'M' -> Rover::step
+            'R' -> Rover::right
+            'L' -> Rover::left
             else -> throw Exception("Incorrect action: $it")
         }
     }
