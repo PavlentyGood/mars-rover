@@ -1,9 +1,17 @@
 package ru.pavlentygood.marsrover.domain
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
 class CoordinateTest {
+
+    @Test
+    fun `create coordinate - invalid parameters`() {
+        shouldThrow<IllegalArgumentException> {
+            Coordinate.create(value = 2, limit = 1)
+        }
+    }
 
     @Test
     fun add() {
