@@ -8,7 +8,6 @@ import ru.pavlentygood.marsrover.domain.Side.*
 import ru.pavlentygood.marsrover.usecase.ExploreMars
 import java.io.InputStream
 import java.io.OutputStream
-import java.io.PrintStream
 import java.util.*
 
 class Console(
@@ -39,7 +38,7 @@ class Console(
 
         val resultRover = exploreMars(rover = rover, actions = actions)
 
-        PrintStream(output).print(resultRover.toResponse())
+        println(resultRover.toResponse())
     }
 
     private fun println(text: String) =
