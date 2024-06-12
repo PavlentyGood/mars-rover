@@ -1,10 +1,10 @@
 package ru.pavlentygood.marsrover.console
 
-import ru.pavlentygood.marsrover.domain.Action.MOVE
+import ru.pavlentygood.marsrover.domain.Action.*
 import ru.pavlentygood.marsrover.domain.Coordinate
 import ru.pavlentygood.marsrover.domain.Rover
 import ru.pavlentygood.marsrover.domain.Side
-import ru.pavlentygood.marsrover.domain.Side.EAST
+import ru.pavlentygood.marsrover.domain.Side.*
 import ru.pavlentygood.marsrover.usecase.ExploreMars
 import java.io.InputStream
 import java.io.OutputStream
@@ -37,10 +37,29 @@ class Console(
     }
 }
 
-fun String.toSide() = EAST
+private val sides = listOf(
+    Pair("N", NORTH),
+    Pair("E", EAST),
+    Pair("S", SOUTH),
+    Pair("W", WEST)
+)
 
-fun String.toActions() = listOf(MOVE)
+fun String.toSide() =
+    sides.find { it.first == this }
+        ?.second
+        ?: throw Exception("Incorrect side: $this")
+
+fun Side.toResponse() =
+    sides.first { it.second == this }.first
+
+fun String.toActions() =
+    this.toCharArray().map {
+        when (it) {
+            'M' -> MOVE
+            'R' -> RIGHT
+            'L' -> LEFT
+            else -> throw Exception("Incorrect action: $it")
+        }
+    }
 
 fun Rover.toResponse() = "${x.value} ${y.value} ${side.toResponse()}"
-
-fun Side.toResponse() = "W"
