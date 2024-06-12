@@ -25,7 +25,12 @@ class ConsoleTest {
 
         Console(input, output, exploreMars).process()
 
-        output.toString(Charsets.UTF_8) shouldBe "2 1 W"
+        output.toString(Charsets.UTF_8) shouldBe """
+            Enter field size:
+            Enter rover position:
+            Enter actions:
+            Result rover position: 2 1 W
+            """.trimIndent()
     }
 
     @Test

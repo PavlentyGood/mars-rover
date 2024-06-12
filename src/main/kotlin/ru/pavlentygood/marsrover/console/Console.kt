@@ -12,17 +12,23 @@ import java.io.PrintStream
 import java.util.*
 
 class Console(
-    private val input: InputStream,
+    input: InputStream,
     private val output: OutputStream,
     private val exploreMars: ExploreMars
 ) {
+    private val scanner = Scanner(input)
+
     fun process() {
-        val scanner = Scanner(input)
+        println("Enter field size:")
         val width = scanner.next().toInt()
         val height = scanner.next().toInt()
+
+        println("Enter rover position:")
         val x = scanner.next().toInt()
         val y = scanner.next().toInt()
         val side = scanner.next().toSide()
+
+        println("Enter actions:")
         val actions = scanner.next().toActions()
 
         val rover = Rover(
@@ -35,6 +41,12 @@ class Console(
 
         PrintStream(output).print(resultRover.toResponse())
     }
+
+    private fun println(text: String) =
+        output.write("$text\n".toByteArray())
+
+    private fun Rover.toResponse() =
+        "Result rover position: ${x.value} ${y.value} ${side.toResponse()}"
 }
 
 private val sides = listOf(
@@ -61,5 +73,3 @@ fun String.toActions() =
             else -> throw Exception("Incorrect action: $it")
         }
     }
-
-fun Rover.toResponse() = "${x.value} ${y.value} ${side.toResponse()}"
