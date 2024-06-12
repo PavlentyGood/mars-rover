@@ -5,11 +5,9 @@ import ru.pavlentygood.marsrover.domain.Rover
 
 class ExploreMarsScenario : ExploreMars {
     override operator fun invoke(rover: Rover, actions: List<Action>): Rover =
-        actions.firstOrNull()
-            ?.let {
-                this(
-                    rover = it.execute(rover),
-                    actions = actions.drop(1)
-                )
-            } ?: rover
+        if (actions.isEmpty()) rover
+        else this(
+            rover = actions.first().execute(rover),
+            actions = actions.drop(1)
+        )
 }
