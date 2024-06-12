@@ -6,9 +6,9 @@ import ru.pavlentygood.marsrover.domain.Action.*
 import ru.pavlentygood.marsrover.domain.Side
 import ru.pavlentygood.marsrover.domain.rover
 
-class ExploreMarsTest {
+class ExploreMarsScenarioTest {
 
-    private val exploreMars = ExploreMars()
+    private val exploreMars = ExploreMarsScenario()
 
     @Test
     fun `explore mars`() {
