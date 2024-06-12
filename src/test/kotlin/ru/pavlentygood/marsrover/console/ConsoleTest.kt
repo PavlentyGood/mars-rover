@@ -31,6 +31,7 @@ class ConsoleTest {
             Enter actions:
             Result rover position: 2 1 W
             
+            
             """.trimIndent()
     }
 
