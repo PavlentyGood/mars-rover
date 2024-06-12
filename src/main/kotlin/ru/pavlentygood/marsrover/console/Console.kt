@@ -45,7 +45,7 @@ class Console(
         output.write("$text\n".toByteArray())
 
     private fun Rover.toResponse() =
-        "Result rover position: ${x.value} ${y.value} ${side.toResponse()}"
+        "Result rover position: ${x.value} ${y.value} ${side.toResponse()}\n"
 }
 
 private val sides = listOf(
