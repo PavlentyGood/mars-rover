@@ -31,7 +31,7 @@ class ConsoleTest {
             Result rover position: 2 1 W
             
             
-            """.trimIndent()
+        """.trimIndent()
     }
 
     @Test

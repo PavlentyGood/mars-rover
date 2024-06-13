@@ -1,3 +1,15 @@
 performance:
   SpreadOperator:
     excludes: ['**/*Application.kt']
+
+formatting:
+  NoWildcardImports:
+    active: false
+  MultiLineIfElse:
+    active: false
+
+style:
+  WildcardImport:
+    active: false
+  UseRequire:
+    active: false

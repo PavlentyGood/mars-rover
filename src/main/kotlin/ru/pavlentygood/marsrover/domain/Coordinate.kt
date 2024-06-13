@@ -15,7 +15,7 @@ data class Coordinate(
     companion object {
         fun create(value: Int, limit: Int) =
             if (isValid(value, limit)) Coordinate(value, limit)
-            else throw IllegalArgumentException()
+            else throw IllegalArgumentException("Impossible properties")
 
         private fun isValid(value: Int, limit: Int) =
             value in MIN_LIMIT..limit

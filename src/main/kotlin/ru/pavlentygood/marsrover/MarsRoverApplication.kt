@@ -6,8 +6,8 @@ import ru.pavlentygood.marsrover.usecase.ExploreMarsScenario
 class MarsRoverApplication
 
 fun main() {
-     while (true) {
-         Console(System.`in`, System.out, ExploreMarsScenario())
-             .process()
-     }
+    while (true) {
+        Console(System.`in`, System.out, ExploreMarsScenario())
+            .process()
+    }
 }

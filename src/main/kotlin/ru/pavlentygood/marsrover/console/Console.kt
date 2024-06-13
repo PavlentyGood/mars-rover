@@ -52,7 +52,7 @@ private val sides = listOf(
 fun String.toSide() =
     sides.find { it.first == this }
         ?.second
-        ?: throw Exception("Incorrect side: $this")
+        ?: throw IllegalArgumentException("Incorrect side: $this")
 
 fun Side.toResponse() =
     sides.first { it.second == this }.first
@@ -63,6 +63,6 @@ fun String.toActions() =
             'M' -> Rover::step
             'R' -> Rover::right
             'L' -> Rover::left
-            else -> throw Exception("Incorrect action: $it")
+            else -> throw IllegalArgumentException("Incorrect action: $it")
         }
     }

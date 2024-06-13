@@ -8,12 +8,11 @@ class RoverTest {
 
     @Test
     fun `create rover`() {
-        Rover.create(width = 8, height = 9, x = 2, y = 5, side = EAST) shouldBe
-                Rover(
-                    x = Coordinate.create(value = 2, limit = 8),
-                    y = Coordinate.create(value = 5, limit = 9),
-                    side = EAST
-                )
+        Rover.create(width = 8, height = 9, x = 2, y = 5, side = EAST) shouldBe Rover(
+            x = Coordinate.create(value = 2, limit = 8),
+            y = Coordinate.create(value = 5, limit = 9),
+            side = EAST
+        )
     }
 
     @Test
